@@ -21,7 +21,6 @@
       }
       .title{
         text-align: center;
-        line-height: normal;
       }
       .title span{
         font-size: 24px;
@@ -286,35 +285,35 @@
     </div>
     <script>
       // 1
-      const input = document.getElementById("myInput");
-      const paragraph = document.getElementById("myParagraph");
+      const input = document.querySelector("#myInput");
+      const paragraph = document.querySelector("#myParagraph");
       input.addEventListener("blur", function () {
         paragraph.textContent += this.value;
         this.value = "";
       });
 
       // 2
-      document.getElementById("sumButton").addEventListener("click", function () {
+      document.querySelector("#sumButton").addEventListener("click", function () {
           const inputs = document.querySelectorAll(".number-input");
           let sum = 0;
           inputs.forEach(function (input) {
             sum += parseFloat(input.value);
           });
-          document.getElementById("sumParagraph").textContent = "Сумма: " + sum;
+          document.querySelector("#sumParagraph").textContent = "Сумма: " + sum;
         });
 
       // 3
-      document.getElementById('numberInput').addEventListener('blur', function () {
+      document.querySelector('#numberInput').addEventListener('blur', function () {
           let number = this.value;
           let sum = 0;
           for (let i = 0; i < number.length; i++) {
               sum += parseInt(number[i], 10);
           }
-          document.getElementById('sumResult').textContent = 'Сумма цифр: ' + sum;
+          document.querySelector('#sumResult').textContent = 'Сумма цифр: ' + sum;
         });
         
       // 4
-      document.getElementById('numbersInput').addEventListener('blur', function () {
+      document.querySelector('#numbersInput').addEventListener('blur', function () {
           let numbersString = this.value;
           let numbersArray = numbersString.split(',').map(function (item) {
             return parseFloat(item);
@@ -326,19 +325,19 @@
               count++;
           }
           let average = sum / count;
-          document.getElementById('averageResult').textContent = 'Среднее арифметическое: ' + average;
+          document.querySelector('#averageResult').textContent = 'Среднее арифметическое: ' + average;
         });
       
       // 5 
-      document.getElementById('fullNameInput').addEventListener('blur', function () {
+      document.querySelector('#fullNameInput').addEventListener('blur', function () {
           let fullName = this.value;
           let parts = fullName.split(' ');
           let lastName = parts[0] || '';
           let firstName = parts[1] || '';
           let patronymic = parts[2] || '';
-          document.getElementById('lastNameInput').value = lastName;
-          document.getElementById('firstNameInput').value = firstName;
-          document.getElementById('patronymicInput').value = patronymic;
+          document.querySelector('#lastNameInput').value = lastName;
+          document.querySelector('#firstNameInput').value = firstName;
+          document.querySelector('#patronymicInput').value = patronymic;
         });
 
       // 6
@@ -348,23 +347,23 @@
       function capitalizeFullName(fullName) {
           return fullName.split(' ').map(capitalizeWord).join(' ');
       }
-      document.getElementById('fullNameInput2').addEventListener('blur', function () {
+      document.querySelector('#fullNameInput2').addEventListener('blur', function () {
           this.value = capitalizeFullName(this.value);
       });
 
       // 7 
-      document.getElementById('textInput').addEventListener('blur', function () {
+      document.querySelector('#textInput').addEventListener('blur', function () {
           let text = this.value.trim();
           let wordCount = 0;
           if (text) {
             let words = text.split(/\s+/);
             wordCount = words.length;
           }
-          document.getElementById('wordCount').textContent = 'Количество слов: ' + wordCount;
+          document.querySelector('#wordCount').textContent = 'Количество слов: ' + wordCount;
         });
 
       // 8
-      document.getElementById('dateInput').addEventListener('blur', function () {
+      document.querySelector('#dateInput').addEventListener('blur', function () {
           let dateValue = this.value;
           let parts = dateValue.split('.');
           if (parts.length === 3) {
@@ -376,24 +375,24 @@
         });
 
       // 9
-      document.getElementById('checkButton').addEventListener('click', function () {
-          let word = document.getElementById('wordInput').value;
+      document.querySelector('#checkButton').addEventListener('click', function () {
+          let word = document.querySelector('#wordInput').value;
           let normalizedWord = word.toLowerCase();
           let reversedWord = normalizedWord.split('').reverse().join('');
           let isPalindrome = normalizedWord === reversedWord;
-          document.getElementById('result').textContent = 'Результат: ' + (isPalindrome ? 'да' : 'нет');
+          document.querySelector('#result').textContent = 'Результат: ' + (isPalindrome ? 'да' : 'нет');
         });
 
       // 10
-      document.getElementById('numberInput2').addEventListener('blur', function () {
+      document.querySelector('#numberInput2').addEventListener('blur', function () {
           let number = this.value;
           let containsThree = number.includes('3');
           let resultText = containsThree ? 'Число содержит цифру 3.' : 'Число не содержит цифру 3.';
-          document.getElementById('result2').textContent = 'Результат: ' + resultText;
+          document.querySelector('#result2').textContent = 'Результат: ' + resultText;
         });
 
       // 11
-      document.getElementById('addIndexButton').addEventListener('click', function () {
+      document.querySelector('addIndexButton').addEventListener('click', function () {
           let paragraphs = document.querySelectorAll('p.p11');
           paragraphs.forEach(function (paragraph, index) {
             paragraph.textContent += ` (${index+1})`;
@@ -416,7 +415,7 @@
         });
       
       // 14
-      let paragraphs = document.querySelectorAll('.number');
+      let paragraphs = document.querySelectorAll('#number');
         paragraphs.forEach(function (paragraph) {
           paragraph.addEventListener('click', function () {
             let number = parseInt(this.textContent);
@@ -425,7 +424,7 @@
         });
 
       // 15
-      document.getElementById('dateInput2').addEventListener('blur', function () {
+      document.querySelector('#dateInput2').addEventListener('blur', function () {
           let inputValue = this.value;
           let dateParts = inputValue.split('.');
           if (dateParts.length === 3) {
@@ -435,19 +434,19 @@
             let date = new Date(year, month, day);
             let daysOfWeek = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
             let dayOfWeek = daysOfWeek[date.getDay()];
-            document.getElementById('dayOfWeek').textContent = 'День недели: ' + dayOfWeek;
+            document.querySelector('#dayOfWeek').textContent = 'День недели: ' + dayOfWeek;
           } else {
-            document.getElementById('dayOfWeek').textContent = 'День недели: некорректный формат даты';
+            document.querySelector('#dayOfWeek').textContent = 'День недели: некорректный формат даты';
           }
         });
       
       // 16
-      document.getElementById('incrementButton').addEventListener('click', function () {
-          let input = document.getElementById('numberInput3');
+      document.querySelector('#incrementButton').addEventListener('click', function () {
+          let input = document.querySelector('#numberInput3');
           input.value = parseInt(input.value) + 1;
         });
-      document.getElementById('decrementButton').addEventListener('click', function () {
-          let input = document.getElementById('numberInput3');
+      document.querySelector('#decrementButton').addEventListener('click', function () {
+          let input = document.querySelector('#numberInput3');
           let currentValue = parseInt(input.value);
           if (currentValue > 0) {
             input.value = currentValue - 1;
@@ -456,7 +455,7 @@
 
       // 17
       let paragraphs2 = document.querySelectorAll('p.p17');
-        let totalClicksInput = document.getElementById('totalClicks');
+        let totalClicksInput = document.querySelector('#totalClicks');
         let totalClicks = 0;
         for (let i = 0; i < paragraphs2.length; i++) {
           paragraphs2[i].addEventListener('click', function () {
@@ -477,12 +476,12 @@
       // 19
       function generateRandomString() {
           let randomString = Math.random().toString(36).substring(2, 10);
-          document.getElementById('randomStringInput').value = randomString;
+          document.querySelector('#randomStringInput').value = randomString;
       }
 
       // 20 
       function shuffleString() {
-          let input = document.getElementById('inputString');
+          let input = document.querySelector('#inputString');
           let stringToShuffle = input.value;
           let shuffledString = shuffle(stringToShuffle.split('')).join('');
           input.value = shuffledString;
@@ -501,37 +500,37 @@
         }
       // 21
       function convertTemperature() {
-          let fahrenheit = parseFloat(document.getElementById('fahrenheitInput').value);
+          let fahrenheit = parseFloat(document.querySelector('#fahrenheitInput').value);
           let celsius = (fahrenheit - 32) * (5 / 9);
-          document.getElementById('resultParagraph').innerText = `Температура в Цельсиях: ${celsius.toFixed(2)} °C`;
+          document.querySelector('#resultParagraph').innerText = `Температура в Цельсиях: ${celsius.toFixed(2)} °C`;
         }
 
       // 22
       function calculateFactorial() {
-          let number = parseInt(document.getElementById('numberInput4').value);
+          let number = parseInt(document.querySelector('#numberInput4').value);
           let factorial = 1;
           for (let i = 1; i <= number; i++) {
             factorial *= i;
           }
-          document.getElementById('resultParagraph2').innerText = `Факториал числа ${number} равен ${factorial}`;
+          document.querySelector('#resultParagraph2').innerText = `Факториал числа ${number} равен ${factorial}`;
         }
     
       // 23
       function solveQuadraticEquation() {
-          let a = parseFloat(document.getElementById('a').value);
-          let b = parseFloat(document.getElementById('b').value);
-          let c = parseFloat(document.getElementById('c').value);
+          let a = parseFloat(document.querySelector('#a').value);
+          let b = parseFloat(document.querySelector('#b').value);
+          let c = parseFloat(document.querySelector('#c').value);
           let discriminant = b * b - 4 * a * c;
 
           if (discriminant > 0) {
             let x1 = (-b + Math.sqrt(discriminant)) / (2 * a);
             let x2 = (-b - Math.sqrt(discriminant)) / (2 * a);
-            document.getElementById('result3').innerText = `Корни уравнения: x1 = ${x1}, x2 = ${x2}`;
+            document.querySelector('#result3').innerText = `Корни уравнения: x1 = ${x1}, x2 = ${x2}`;
           } else if (discriminant === 0) {
             let x = -b / (2 * a);
-            document.getElementById('result3').innerText = `Уравнение имеет один корень: x = ${x}`;
+            document.querySelector('#result3').innerText = `Уравнение имеет один корень: x = ${x}`;
           } else {
-            document.getElementById('result3').innerText = 'Уравнение не имеет действительных корней';
+            document.querySelector('#result3').innerText = 'Уравнение не имеет действительных корней';
           }
         }
     </script>
